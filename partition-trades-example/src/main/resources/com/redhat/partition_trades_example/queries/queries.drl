@@ -1,0 +1,15 @@
+package com.redhat.partition_trades_example.queries;
+import tradeEvent.TradeEvent;
+import report.Report;
+
+query "reports generated"
+
+    $report:Report()
+    
+end
+
+query "trades"
+
+    $trade:TradeEvent()
+    
+end

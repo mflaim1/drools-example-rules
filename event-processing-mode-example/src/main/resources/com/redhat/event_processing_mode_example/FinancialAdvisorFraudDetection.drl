@@ -1,0 +1,20 @@
+package com.redhat.event_processing_mode_example.cloud_mode;
+
+import java.lang.Number;
+import tradeEvent.TradeEvent;
+import report.Report;
+import stockPriceEvent.StockPriceEvent;
+
+rule "scenario1"
+	dialect "mvel"
+	when
+		$trade1 : TradeEvent( $accountId : accountId, $financialAdvisorId : financialAdvisorId, $symbol : symbol, $trade1ID : id)
+		TradeEvent( id != $trade1ID && accountId == $accountId && financialAdvisorId == $financialAdvisorId && symbol == $symbol && this before [0s, 4m] $trade1, $trade2ID : id)
+
+	then
+		Report report = new Report();
+		report.setCode( "Example project code, reason is too many trades by one financial advisor" );
+		report.getTrades().add($trade1ID);
+		report.getTrades().add($trade2ID);
+		insert( report );
+end

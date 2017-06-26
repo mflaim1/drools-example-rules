@@ -1,0 +1,24 @@
+package com.redhat.partition_trades_example.suspicious_financial_advisors;
+
+import java.lang.Number;
+import tradeEvent.TradeEvent;
+import report.Report;
+import java.util.ArrayList;
+import java.lang.String;
+import java.util.List;
+
+rule "suspicious-financial-advisors"
+	dialect "mvel"
+	when
+		$trade1 : TradeEvent( )
+		$trades : ArrayList( size() > 1 ) from accumulate ( $tradeEvent : TradeEvent( financialAdvisorId == $trade1.financialAdvisorId , this after [0s, 5m] $trade1 , id != $trade1.id ),
+			init( List list = new ArrayList(); list.add($trade1.id); ),
+			action( list.add($tradeEvent.id) ),
+			result( list )
+) 
+	then
+		Report report = new Report();
+		report.setCode( "Excessive Trading with one FA" );
+		report.setTrades( $trades );
+		insert( report );
+end

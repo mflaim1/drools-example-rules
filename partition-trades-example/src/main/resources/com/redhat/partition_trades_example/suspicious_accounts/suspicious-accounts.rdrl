@@ -1,0 +1,23 @@
+package com.redhat.partition_trades_example.suspicious_accounts;
+
+import java.lang.Number;
+import report.Report;
+import tradeEvent.TradeEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+rule "suspicious-accounts"
+	dialect "mvel"
+	when
+		$trade1 : TradeEvent( )
+		$trades : ArrayList( size() > 1 ) from accumulate ( $tradeEvent : TradeEvent( this after [0s, 5m] $trade1 , id != $trade1.id , accountId == $trade1.accountId ),
+			init( List list= new ArrayList(); list.add($trade1.id); ),
+			action( list.add($tradeEvent.id) ),
+			result( list )
+) 
+	then
+		Report report = new Report();
+		report.setCode( "Excessive Trading with one Investor" );
+		report.setTrades( $trades );
+		insert( report );
+end

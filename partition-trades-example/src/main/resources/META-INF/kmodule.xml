@@ -1,0 +1,6 @@
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <kbase name="suspicious-accounts" default="false" eventProcessingMode="cloud" equalsBehavior="identity" packages="com.redhat.partition_trades_example.queries, com.redhat.partition_trades_example.suspicious_accounts"/>
+  <kbase name="suspicious-fas" default="false" eventProcessingMode="cloud" equalsBehavior="identity" packages="com.redhat.partition_trades_example.queries, com.redhat.partition_trades_example.suspicious_financial_advisors">
+    <ksession name="randomss" type="stateless" default="true" clockType="realtime"/>
+  </kbase>
+</kmodule>

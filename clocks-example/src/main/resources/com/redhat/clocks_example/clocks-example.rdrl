@@ -1,0 +1,23 @@
+package com.redhat.clocks_example;
+
+import java.lang.Number;
+import tradeEvent.TradeEvent;
+import report.Report;
+import java.util.ArrayList;
+import java.util.List;
+
+rule "clocks-example"
+	dialect "mvel"
+	when
+		$trade1 : TradeEvent( ) over window:length (1)
+		$trades : ArrayList( size() > 1 ) from accumulate ( $tradeEvent : TradeEvent( financialAdvisorId == $trade1.financialAdvisorId , id != $trade1.id ) over window:time (5m),
+			init( List list= new ArrayList(); list.add($trade1.id); ),
+			action( list.add($tradeEvent.id); ),
+			result( list )
+) 
+	then
+		Report fact0 = new Report();
+		fact0.setCode( "Excessive Trading with one FA" );
+		fact0.setTrades( $trades );
+		insert( fact0 );
+end

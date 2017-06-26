@@ -1,0 +1,17 @@
+package com.redhat.event_processing_mode_example.queries;
+import java.lang.Number;
+import tradeEvent.TradeEvent;
+import report.Report;
+import stockPriceEvent.StockPriceEvent;
+
+query "reports generated"
+
+    $report:Report()
+    
+end
+
+query "trades"
+
+    $trade:TradeEvent()
+    
+end
