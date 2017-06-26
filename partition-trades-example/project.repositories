@@ -12,7 +12,7 @@
       <include>true</include>
       <metadata>
         <id>guvnor-m2-repo</id>
-        <url>http://localhost:8081/business-central/maven2/</url>
+        <url>http://localhost:8080/business-central/maven2/</url>
         <source>PROJECT</source>
       </metadata>
     </repository>
@@ -20,7 +20,7 @@
       <include>true</include>
       <metadata>
         <id>local</id>
-        <url>/home/mflaim/.m2/repository</url>
+        <url>YOUR/FILEPATH/TO/MAVEN/REPO</url>
         <source>LOCAL</source>
       </metadata>
     </repository>
