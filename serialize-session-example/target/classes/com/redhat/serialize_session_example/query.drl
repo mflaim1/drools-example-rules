@@ -1,0 +1,18 @@
+package com.redhat.serialize_session_example;
+
+import java.lang.Number;
+import tradeEvent.TradeEvent;
+import report.Report;
+import stockPriceEvent.StockPriceEvent;
+
+query "reports generated"
+
+    $report:Report()
+    
+end
+
+query "trades"
+
+    $trade:TradeEvent()
+    
+end

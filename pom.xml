@@ -14,5 +14,8 @@
     <module>clocks-example</module>
     <module>event-processing-mode-example</module>
     <module>partition-trades-example</module>
+    <module>serialize-session-example</module>
+    <module>memory-management-explicit-removal</module>
+   <module>memory-management-explicit-expiry</module>
   </modules>
 </project>

@@ -1,0 +1,30 @@
+<org.drools.core.rule.KieModuleMetaInfo>
+  <typeMetaInfos>
+    <entry>
+      <string>tradeEvent.TradeEvent</string>
+      <org.drools.core.rule.TypeMetaInfo>
+        <kind>CLASS</kind>
+        <role>EVENT</role>
+        <isDeclaredType>false</isDeclaredType>
+      </org.drools.core.rule.TypeMetaInfo>
+    </entry>
+    <entry>
+      <string>report.Report</string>
+      <org.drools.core.rule.TypeMetaInfo>
+        <kind>CLASS</kind>
+        <role>FACT</role>
+        <isDeclaredType>false</isDeclaredType>
+      </org.drools.core.rule.TypeMetaInfo>
+    </entry>
+  </typeMetaInfos>
+  <rulesByPackage>
+    <entry>
+      <string>com.redhat.memory_management_explicit_expiry</string>
+      <set>
+        <string>ExpiryRule</string>
+        <string>reports generated</string>
+        <string>trades</string>
+      </set>
+    </entry>
+  </rulesByPackage>
+</org.drools.core.rule.KieModuleMetaInfo>

@@ -1,0 +1,38 @@
+<org.drools.core.rule.KieModuleMetaInfo>
+  <typeMetaInfos>
+    <entry>
+      <string>tradeEvent.TradeEvent</string>
+      <org.drools.core.rule.TypeMetaInfo>
+        <kind>CLASS</kind>
+        <role>EVENT</role>
+        <isDeclaredType>false</isDeclaredType>
+      </org.drools.core.rule.TypeMetaInfo>
+    </entry>
+    <entry>
+      <string>report.Report</string>
+      <org.drools.core.rule.TypeMetaInfo>
+        <kind>CLASS</kind>
+        <role>FACT</role>
+        <isDeclaredType>false</isDeclaredType>
+      </org.drools.core.rule.TypeMetaInfo>
+    </entry>
+    <entry>
+      <string>java.util.ArrayList</string>
+      <org.drools.core.rule.TypeMetaInfo>
+        <kind>CLASS</kind>
+        <role>FACT</role>
+        <isDeclaredType>false</isDeclaredType>
+      </org.drools.core.rule.TypeMetaInfo>
+    </entry>
+  </typeMetaInfos>
+  <rulesByPackage>
+    <entry>
+      <string>com.redhat.serialize_session_example</string>
+      <set>
+        <string>reports generated</string>
+        <string>trades</string>
+        <string>clocks-example</string>
+      </set>
+    </entry>
+  </rulesByPackage>
+</org.drools.core.rule.KieModuleMetaInfo>

@@ -1,0 +1,24 @@
+package com.redhat.memory_management_explicit_expiry;
+
+import java.lang.Number;
+import tradeEvent.TradeEvent;
+import report.Report;
+import stockPriceEvent.StockPriceEvent;
+
+//mvn clean install will validate this, error codes will help develop sensible rules
+//If that passes, then running the tests should cover running this
+
+//Prereq: The trade events used here need to have an @expires value
+//The then side should generate the report, then advance the session clock before ending
+
+rule "ExpiryRule"
+	dialect "mvel"
+	when
+		$trade1 : TradeEvent($trade1ID : id)
+
+	then
+		Report report = new Report();
+		report.setCode( "Example project code, testing expiry" );
+		report.getTrades().add($trade1ID);
+		insert( report );
+end

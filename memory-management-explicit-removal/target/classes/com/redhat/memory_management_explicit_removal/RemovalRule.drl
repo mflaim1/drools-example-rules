@@ -1,0 +1,25 @@
+package com.redhat.memory_management_explicit_removal;
+
+import java.lang.Number;
+import tradeEvent.TradeEvent;
+import report.Report;
+import stockPriceEvent.StockPriceEvent;
+
+//mvn clean install will validate this, error codes will help develop sensible rules
+//If that passes, then running the tests should cover running this
+
+//then block generates report
+//then block removes the event from memory with retract(event)
+
+rule "RemovalRule"
+	dialect "mvel"
+	when
+		$trade1 : TradeEvent($trade1ID : id)
+
+	then
+		Report report = new Report();
+		report.setCode( "Example project code, testing explicit removal" );
+		report.getTrades().add($trade1ID);
+		insert( report );
+		retract($trade1);
+end
